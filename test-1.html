@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>តេស្តត្រីកោណមាត្រថ្នាក់ទី១១</title>
+    
+    <!-- ប្រើប្រាស់ MathJax សម្រាប់បង្ហាញរូបមន្តគណិតវិទ្យា -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&display=swap');
+
+        body { 
+            font-family: 'Kantumruy Pro', sans-serif; 
+            background-color: #f0f2f5; 
+            padding: 20px; 
+            color: #333;
+        }
+        .container { 
+            max-width: 850px; 
+            margin: auto; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+        }
+        h1 { text-align: center; color: #1a73e8; margin-bottom: 10px; }
+        .quiz-header { 
+            text-align: center; 
+            background: #e8f0fe; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-bottom: 30px;
+            border: 1px solid #d2e3fc;
+        }
+        .question { 
+            margin-bottom: 30px; 
+            padding: 20px; 
+            border: 1px solid #eee; 
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .question:hover { border-color: #1a73e8; }
+        .question p { font-weight: bold; font-size: 1.1em; margin-bottom: 15px; }
+        .options label { 
+            display: block; 
+            margin: 12px 0; 
+            cursor: pointer; 
+            padding: 10px; 
+            border-radius: 6px; 
+            background: #f8f9fa;
+        }
+        .options label:hover { background: #e9ecef; }
+        .btn-container { text-align: center; margin-top: 40px; }
+        button { 
+            background: #1a73e8; color: white; border: none; 
+            padding: 15px 40px; font-size: 18px; border-radius: 30px; 
+            cursor: pointer; font-family: 'Kantumruy Pro';
+            box-shadow: 0 4px 6px rgba(26, 115, 232, 0.3);
+        }
+        button:hover { background: #1557b0; }
+        #result { 
+            margin-top: 30px; padding: 30px; border-radius: 12px; 
+            display: none; text-align: center; 
+        }
+        .score-box { font-size: 28px; font-weight: bold; color: #1a73e8; }
+        .math-text { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>វិញ្ញាសាតេស្តគណិតវិទ្យា</h1>
+    <div class="quiz-header">
+        <strong>មេរៀន៖ រូបមន្តត្រីកោណមាត្រ</strong><br>
+        ពិន្ទុ៖ ត្រូវ (+៥) | ខុស (-១) | រំលង (០)
+    </div>
+
+    <form id="quizForm">
+        <!-- សំណួរទី ១ -->
+        <div class="question">
+            <p>១. តើរូបមន្ត \( \cos(a + b) \) ស្មើនឹងអ្វី?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A. \( \cos a \cos b + \sin a \sin b \)</label>
+                <label><input type="radio" name="q1" value="B"> B. \( \cos a \cos b - \sin a \sin b \)</label>
+                <label><input type="radio" name="q1" value="C"> C. \( \sin a \cos b + \cos a \sin b \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ២ -->
+        <div class="question">
+            <p>២. តើរូបមន្ត \( \sin(2a) \) ស្មើនឹងអ្វី?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A. \( 2 \sin a \cos a \)</label>
+                <label><input type="radio" name="q2" value="B"> B. \( \cos^2 a - \sin^2 a \)</label>
+                <label><input type="radio" name="q2" value="C"> C. \( \frac{2 \tan a}{1 + \tan^2 a} \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៣ -->
+        <div class="question">
+            <p>៣. គណនាតម្លៃនៃ \( \sin 75^\circ \)</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A. \( \frac{\sqrt{6} - \sqrt{2}}{4} \)</label>
+                <label><input type="radio" name="q3" value="B"> B. \( \frac{\sqrt{6} + \sqrt{2}}{4} \)</label>
+                <label><input type="radio" name="q3" value="C"> C. \( \frac{\sqrt{2} + \sqrt{3}}{4} \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៤ -->
+        <div class="question">
+            <p>៤. តើរូបមន្ត \( \cos(2a) \) ស្មើនឹងកន្សោមខាងក្រោម លើកលែងតែ៖</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A. \( 1 - 2\sin^2 a \)</label>
+                <label><input type="radio" name="q4" value="B"> B. \( 2\cos^2 a - 1 \)</label>
+                <label><input type="radio" name="q4" value="C"> C. \( 2\sin a \cos a \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៥ -->
+        <div class="question">
+            <p>៥. បំប្លែងផលបូក \( \sin p + \sin q \) ទៅជាផលគុណ៖</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A. \( 2 \sin\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) \)</label>
+                <label><input type="radio" name="q5" value="B"> B. \( 2 \cos\left(\frac{p+q}{2}\right) \cos\left(\frac{p-q}{2}\right) \)</label>
+                <label><input type="radio" name="q5" value="C"> C. \( 2 \sin\left(\frac{p-q}{2}\right) \cos\left(\frac{p+q}{2}\right) \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៦ -->
+        <div class="question">
+            <p>៦. បើ \( \tan a = \frac{1}{2} \) គណនា \( \tan(2a) \)</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A. \( \frac{3}{4} \)</label>
+                <label><input type="radio" name="q6" value="B"> B. \( \frac{4}{3} \)</label>
+                <label><input type="radio" name="q6" value="C"> C. \( 1 \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៧ -->
+        <div class="question">
+            <p>៧. សម្រួលកន្សោម \( \sin x \cos y - \cos x \sin y \)</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A. \( \sin(x + y) \)</label>
+                <label><input type="radio" name="q7" value="B"> B. \( \cos(x - y) \)</label>
+                <label><input type="radio" name="q7" value="C"> C. \( \sin(x - y) \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៨ -->
+        <div class="question">
+            <p>៨. តម្លៃនៃ \( 2 \sin 15^\circ \cos 15^\circ \) គឺ៖</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A. \( \frac{1}{2} \)</label>
+                <label><input type="radio" name="q8" value="B"> B. \( \frac{\sqrt{3}}{2} \)</label>
+                <label><input type="radio" name="q8" value="C"> C. \( \frac{\sqrt{2}}{2} \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ៩ -->
+        <div class="question">
+            <p>៩. បើ \( \cos x = \frac{1}{2} \) និង \( 0 < x < \frac{\pi}{2} \) នោះ \( x \) គឺ៖</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> A. \( \frac{\pi}{6} \)</label>
+                <label><input type="radio" name="q9" value="B"> B. \( \frac{\pi}{3} \)</label>
+                <label><input type="radio" name="q9" value="C"> C. \( \frac{\pi}{4} \)</label>
+            </div>
+        </div>
+
+        <!-- សំណួរទី ១០ -->
+        <div class="question">
+            <p>១០. រូបមន្តបំប្លែងផលគុណទៅជាផលបូក៖ \( 2 \sin a \sin b \)</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A. \( \cos(a-b) - \cos(a+b) \)</label>
+                <label><input type="radio" name="q10" value="B"> B. \( \cos(a-b) + \cos(a+b) \)</label>
+                <label><input type="radio" name="q10" value="C"> C. \( \sin(a+b) + \sin(a-b) \)</label>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" onclick="calculateScore()">បញ្ជូនចម្លើយ</button>
+        </div>
+    </form>
+
+    <div id="result">
+        <h2>លទ្ធផលនៃការធ្វើតេស្ត</h2>
+        <div class="score-box" id="finalScore"></div>
+        <div id="stats" style="margin-top: 15px; font-size: 1.1em;"></div>
+        <button type="button" onclick="location.reload()" style="background:#6c757d; margin-top:20px;">ធ្វើម្ដងទៀត</button>
+    </div>
+</div>
+
+<script>
+    function calculateScore() {
+        const answers = {
+            q1: 'B', q2: 'A', q3: 'B', q4: 'C', q5: 'A',
+            q6: 'B', q7: 'C', q8: 'A', q9: 'B', q10: 'A'
+        };
+
+        let score = 0;
+        let correct = 0;
+        let wrong = 0;
+        let skip = 0;
+
+        for (let i = 1; i <= 10; i++) {
+            const q = 'q' + i;
+            const selected = document.querySelector(`input[name="${q}"]:checked`);
+
+            if (!selected) {
+                skip++;
+            } else if (selected.value === answers[q]) {
+                correct++;
+                score += 5;
+            } else {
+                wrong++;
+                score -= 1;
+            }
+        }
+
+        document.getElementById('quizForm').style.display = 'none';
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        
+        document.getElementById('finalScore').innerHTML = `ពិន្ទុទទួលបាន៖ ${score} / ៥០`;
+        document.getElementById('stats').innerHTML = `
+            <span style="color: #28a745;">ត្រូវ៖ ${correct}</span> | 
+            <span style="color: #dc3545;">ខុស៖ ${wrong}</span> | 
+            <span style="color: #6c757d;">រំលង៖ ${skip}</span>
+        `;
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
